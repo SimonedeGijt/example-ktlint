@@ -1,0 +1,34 @@
+HELP.md
+.gradle
+/build/
+**/build/
+gl-code-quality-report.json
+!gradle/wrapper/gradle-wrapper.jar
+**/bin
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+*.iws
+*.iml
+*.ipr
+/out/
+/.idea
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+.DS_Store
