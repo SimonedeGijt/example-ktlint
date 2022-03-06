@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service
 class GreetingService {
     private var storedGreetings = listOf("hello")
 
-            fun getGreetings(): List<String> = storedGreetings
+    fun getGreetings(): List<String> = storedGreetings
 }
