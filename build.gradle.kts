@@ -4,8 +4,7 @@ plugins {
     kotlin("jvm") version "1.6.0"
     kotlin("plugin.spring") version "1.6.0"
     idea
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
-    id("com.softeq.gradle.itest") version "1.0.4"
+    // id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
     id("com.github.ben-manes.versions") version "0.42.0"
 }
 
@@ -14,10 +13,6 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-}
-
-configurations {
-    itestImplementation.get().extendsFrom(testImplementation.get())
 }
 
 dependencies {
@@ -31,9 +26,6 @@ dependencies {
 idea {
     module {
         inheritOutputDirs = false
-
-        testSourceDirs.plusAssign(sourceSets["itest"].allSource.srcDirs)
-        testResourceDirs.plusAssign(project.sourceSets["itest"].resources.srcDirs)
     }
 }
 
@@ -56,30 +48,30 @@ tasks {
         }
     }
 
-    ktlint {
-        version.set("0.44.0")
-        // debug.set(true)
-        // verbose.set(true)
-        // android.set(false)
-        // ignoreFailures.set(true)
-        // enableExperimentalRules.set(true)
-        // disabledRules.set(setOf("indent"))
-        reporters {
-            reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
-            reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
-
-            customReporters {
-                register("html") {
-                    fileExtension = "html"
-                    dependency = "com.pinterest.ktlint:ktlint-reporter-html:0.38.1"
-                }
-            }
-        }
-        // kotlinScriptAdditionalPaths {
-        //     include(fileTree("scripts/"))
-        // }
-        // filter {
-        //     exclude("**/*Test*")
-        // }
-    }
+    // ktlint {
+    //     version.set("0.44.0") // Pinterest version
+    //     debug.set(true)
+    //     verbose.set(true)
+    //     android.set(false)
+    //     ignoreFailures.set(true)
+    //     disabledRules.set(setOf("indent"))
+    //     enableExperimentalRules.set(true)
+    //     reporters {
+    //         reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
+    //         reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
+    //
+    //         customReporters {
+    //             register("html") {
+    //                 fileExtension = "html"
+    //                 dependency = "com.pinterest.ktlint:ktlint-reporter-html:0.38.1"
+    //             }
+    //         }
+    //     }
+    //     kotlinScriptAdditionalPaths {
+    //         include(fileTree("scripts/"))
+    //     }
+    //     filter {
+    //         exclude("**/*Test*")
+    //     }
+    // }
 }
