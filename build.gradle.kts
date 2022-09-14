@@ -9,7 +9,6 @@ plugins {
 }
 
 group = "example.ktlint"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -29,23 +28,16 @@ idea {
     }
 }
 
-fun setupEnv(task: Test) {
-    val env = System.getenv("ENV") ?: "test"
-    task.environment("SMOKE_TEST_ENV", env)
-}
-
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict")
-            jvmTarget = JavaVersion.VERSION_11.toString()
+            jvmTarget = JavaVersion.VERSION_17.toString()
         }
     }
 
     withType<Test> {
-        useJUnitPlatform {
-            excludeTags("smoke")
-        }
+        useJUnitPlatform { }
     }
 
     // ktlint {
